@@ -1,0 +1,237 @@
+:root {
+  --main-bg-color: #121212;
+  --main-text-color: #e0e0e0;
+  --title-color: #fff;
+  --square-bg-color: #263238;
+  --square-hover-bg-color: #37474f;
+  --alt-text-color: #eceff1;
+  --alt-bg-color: #455a64;
+  --alt-hover-color: #546e7a;
+  --info-text-color: #b0bec5;
+  --highlight-color: #40F99B;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 2rem;
+  color: var(--title-color);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  overflow: hidden;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 20px;
+}
+
+.game-info {
+  color: var(--info-text-color);
+  text-align: center;
+  margin-top: 20px;
+  overflow-y: auto;
+}
+
+.status {
+  color: var(--info-text-color);
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 20px 0;
+}
+
+.square {
+  background-color: var(--square-bg-color);
+  border: 1px solid var(--alt-bg-color);
+  color: var(--alt-text-color);
+  font-size: calc(1.5rem + 4vw);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(60px + 5vw);
+  height: calc(60px + 5vw);
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.square:hover {
+  background-color: var(--square-hover-bg-color);
+  transform: scale(1.05);
+}
+
+.square:focus {
+  outline: 2px solid var(--info-text-color);
+  outline-offset: 2px;
+}
+
+.square.highlight {
+  background-color: var(--highlight-color);
+}
+
+.new-game-btn {
+  background-color: var(--alt-bg-color);
+  color: var(--alt-text-color);
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 0;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  width: 200px;
+  height: 70px;
+  text-align: center;
+}
+
+.new-game-btn:hover {
+  background-color: var(--highlight-color);
+}
+
+.game-info ol {
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  margin: 0;
+  height: 20vh;
+}
+
+.game-info ol li {
+  font-size: 1rem;
+  color: var(--info-text-color);
+}
+
+.game-info button {
+  background-color: var(--alt-bg-color);
+  color: var(--alt-text-color);
+  border: none;
+  padding: 8px 12px;
+  margin: 5px 0;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.game-info button:hover {
+  background-color: var(--alt-hover-color);
+}
+
+.game-info button:focus {
+  outline: 2px solid var(--info-text-color);
+  outline-offset: 2px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 40px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--title-color);
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #4caf50;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+ 
+.sort-toggle {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.sort-toggle span {
+  margin-left: 10px;
+  font-size: 1rem;
+  color: var(--info-text-color);
+}
+
+@media (max-width: 768px) {
+  .game {
+    padding: 20px;
+  }
+
+  .game-board {
+    margin-bottom: 20px;
+  }
+  
+  .game-info {
+    margin-top: 10px;
+  }
+  
+  .square {
+    width: calc(40px + 5vw);
+    height: calc(40px + 5vw);
+  }
+
+  .game-info ol {
+    grid-template-columns: 1fr;
+  }
+}
